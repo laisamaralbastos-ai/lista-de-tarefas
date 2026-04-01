@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Tarefas</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #0d1117;
+      color: white;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input {
+      padding: 10px;
+      width: 200px;
+    }
+
+    button {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #161b22;
+      margin: 10px auto;
+      padding: 10px;
+      width: 250px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Minha Lista de Tarefas</h1>
+
+<input id="tarefa" placeholder="Digite uma tarefa">
+<button onclick="adicionar()">Adicionar</button>
+
+<ul id="lista"></ul>
+
+<script>
+  function adicionar() {
+    let input = document.getElementById("tarefa");
+    let texto = input.value;
+
+    if (texto === "") return;
+
+    let li = document.createElement("li");
+    li.innerHTML = texto + ' <button onclick="remover(this)">X</button>';
+
+    document.getElementById("lista").appendChild(li);
+
+    input.value = "";
+  }
+
+  function remover(botao) {
+    botao.parentElement.remove();
+  }
+</script>
+
+</body>
+</html>
